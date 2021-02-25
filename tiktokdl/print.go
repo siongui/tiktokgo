@@ -2,6 +2,7 @@ package tiktokdl
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/fatih/color"
 	"github.com/siongui/tiktokgo"
@@ -25,4 +26,9 @@ func PrintTiktokUser(user tiktokgo.TiktokUser) {
 
 	fmt.Print("avatar larger url: ")
 	rc.Print(user.AvatarLarger)
+}
+
+func GetRFC3339Time(timestamp int64) string {
+	t := time.Unix(timestamp, 0)
+	return t.Format(time.RFC3339)
 }
