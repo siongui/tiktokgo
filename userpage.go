@@ -68,6 +68,7 @@ type TiktokItem struct {
 type UserPageNextData struct {
 	Props struct {
 		PageProps struct {
+			ServerCode         int64          `json:"serverCode"`
 			UserInfo           TiktokUserInfo `json:"userInfo"`
 			Items              []TiktokItem   `json:"items"`
 			VideoListHasMore   bool           `json:"videoListHasMore"`
@@ -81,7 +82,7 @@ func GetWebUserPageNextData(username string) (nd UserPageNextData, err error) {
 	//url := "https://www.tiktok.com/@" + username + "?"
 	url := "https://www.tiktok.com/@" + username
 
-	b, err := SendHttpRequest(url, http.MethodGet, nil, nil)
+	b, err := SendHttpRequest(url, http.MethodGet, nil, defaultHeaders)
 	if err != nil {
 		return
 	}

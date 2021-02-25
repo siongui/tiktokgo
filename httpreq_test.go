@@ -6,7 +6,7 @@ import (
 
 func TestSetUserAgent(t *testing.T) {
 	SetUserAgent("hello world")
-	if userAgent != "hello world" {
-		t.Error(userAgent)
+	if defaultHeaders["User-Agent"] != "hello world" {
+		t.Error(defaultHeaders["User-Agent"])
 	}
 }
