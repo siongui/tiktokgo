@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+
+  "name": "tiktokcookies",
+  "description": "Get cookies to access TikTok",
+  "version": "0.1",
+  "incognito": "split",
+
+  "browser_action": {
+    "default_title": "get TikTok cookies",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "cookies",
+    "tabs",
+    "*://tiktok.com/"
+  ]
+}

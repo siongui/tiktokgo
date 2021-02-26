@@ -82,7 +82,11 @@ func GetWebUserPageNextData(username string) (nd UserPageNextData, err error) {
 	//url := "https://www.tiktok.com/@" + username + "?"
 	url := "https://www.tiktok.com/@" + username
 
-	b, err := SendHttpRequest(url, http.MethodGet, nil, defaultHeaders)
+	cookies, err := GetCookies()
+	if err != nil {
+		return
+	}
+	b, err := SendHttpRequest(url, http.MethodGet, cookies, GetHeaders())
 	if err != nil {
 		return
 	}
