@@ -55,7 +55,9 @@ func GetCookies() (map[string]string, error) {
 	return defaultCookies, err
 }
 
-// FIXME: ok to get cookies, but cannot be used to get correct video addr
+// GetFirstTimeCookies helps to get cookies used to access API and download
+// videos. Note that referer header is must when downloading the video.
+// Otherwise HTTP 403 will be returned when downloading the video.
 func GetFirstTimeCookies() (c map[string]string, err error) {
 	url := "https://www.tiktok.com/"
 	req, err := http.NewRequest(http.MethodGet, url, nil)
@@ -89,6 +91,9 @@ func GetFirstTimeCookies() (c map[string]string, err error) {
 	return
 }
 
+// referer header is not necessary while accessing API, but is must when
+// downloading videos. The same headers and cookies must be used both when
+// access API and downloading videos.
 var defaultHeaders = map[string]string{
 	"Accept":     "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
 	"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",

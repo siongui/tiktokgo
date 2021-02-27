@@ -18,12 +18,33 @@ tiktokgo
    :target: https://raw.githubusercontent.com/siongui/tiktokgo/master/UNLICENSE
 
 
-**TODO**
+**tiktokgo** downloads user avatar photo and videos. Currently this package can
+download user avatar photos and latest 5 video items without login if the user
+account is not private.
 
 Tested on:
 
   - `Ubuntu 20.10`_
   - `Go 1.16`_
+
+
+Important Tricks
+++++++++++++++++
+
+According to README in `drawrowfly/tiktok-scraper`_, the video play/download
+address is binded to the **tt_webid_v2** cookie value. To download the video
+successfully, the same headers/cookies must be used both when access API or
+metadata and when access/download videos.
+The following three are necessary part (values copied from README in
+`drawrowfly/tiktok-scraper`_ for illustration purpose):
+
+.. code-block:: txt
+
+  headers: {
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.80 Safari/537.36",
+    "referer": "https://www.tiktok.com/",
+    "cookie": "tt_webid_v2=689854141086886123"
+  },
 
 
 UNLICENSE
@@ -48,3 +69,4 @@ References
 .. _Ubuntu 20.10: https://releases.ubuntu.com/20.10/
 .. _Go 1.16: https://golang.org/dl/
 .. _UNLICENSE: https://unlicense.org/
+.. _drawrowfly/tiktok-scraper: https://github.com/drawrowfly/tiktok-scraper
