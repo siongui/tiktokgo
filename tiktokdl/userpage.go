@@ -15,7 +15,7 @@ func DownloadAvatar(user tiktokgo.TiktokUser) (err error) {
 
 	avatarpath := UserAvatarFilePath(user)
 	if _, err := os.Stat(avatarpath); os.IsNotExist(err) {
-		return Wget(user.AvatarLarger, avatarpath)
+		return SaveItemBytes(user.AvatarLarger, avatarpath, nil, nil)
 	} else {
 		if err != nil {
 			return err
@@ -26,6 +26,11 @@ func DownloadAvatar(user tiktokgo.TiktokUser) (err error) {
 
 // DownloadItem downloads user's tiktok video.
 func DownloadItem(item tiktokgo.TiktokItem) (err error) {
+	cookies, err := tiktokgo.GetCookies()
+	if err != nil {
+		return
+	}
+
 	err = CreateDirIfNotExist(UserDir(item.Author))
 	if err != nil {
 		return
@@ -33,7 +38,7 @@ func DownloadItem(item tiktokgo.TiktokItem) (err error) {
 
 	itempath := UserItemFilePath(item)
 	if _, err := os.Stat(itempath); os.IsNotExist(err) {
-		return Wget(item.Video.PlayAddr, itempath)
+		return SaveItemBytes(item.Video.PlayAddr, itempath, tiktokgo.GetHeaders(), cookies)
 		//println(item.Video.PlayAddr)
 		//println(item.Video.DownloadAddr)
 		//println(itempath)
