@@ -22,9 +22,19 @@ func SaveItemBytes(url, localFilePath string, headers, cookies map[string]string
 		req.AddCookie(&http.Cookie{Name: name, Value: value})
 	}
 
+	// From https://github.com/drawrowfly/tiktok-scraper
+	//   - *User-Agent* header
+	//   - *referer* header
+	//   - *tt_webid_v2* cookie
+	// must be the same both when accessing API and when downloading video.
+	// Otherwise HTTP 403 status code will be returned when downloading
+	// video.
 	for name, value := range headers {
 		req.Header.Set(name, value)
 	}
+	// without the following referer header, HTTP response status code will
+	// be 403 when we try to download video.
+	req.Header.Set("referer", "https://www.tiktok.com/")
 
 	client := &http.Client{}
 	resp, err := client.Do(req)
