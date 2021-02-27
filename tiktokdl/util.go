@@ -1,11 +1,13 @@
 package tiktokdl
 
 import (
+	"errors"
 	"io"
 	"log"
 	"net/http"
 	"os"
 	"os/exec"
+	"strconv"
 )
 
 func SaveItemBytes(url, localFilePath string, headers, cookies map[string]string) (err error) {
@@ -32,6 +34,12 @@ func SaveItemBytes(url, localFilePath string, headers, cookies map[string]string
 	defer resp.Body.Close()
 
 	log.Println("HTTP response status code: ", resp.StatusCode)
+
+	if resp.StatusCode != 200 {
+		err = errors.New(url +
+			"\nresp.StatusCode: " + strconv.Itoa(resp.StatusCode))
+		return
+	}
 
 	f, err := os.Create(localFilePath)
 	if err != nil {
