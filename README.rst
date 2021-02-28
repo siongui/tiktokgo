@@ -18,9 +18,16 @@ tiktokgo
    :target: https://raw.githubusercontent.com/siongui/tiktokgo/master/UNLICENSE
 
 
-**tiktokgo** downloads user avatar photo and videos. Currently this package can
-download user avatar photos and latest 5 video items without login if the user
-account is not private.
+**tiktokgo** downloads user avatar photo and videos.
+
+Currently this package can
+
+- download user avatar photos and latest 5 video items (with watermark) without
+  login if the user account is not private.
+- download video item (with watermark) by the item URL.
+
+Visit `example <tiktokdl/example/>` directory for examples.
+
 
 Tested on:
 
