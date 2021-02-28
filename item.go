@@ -7,6 +7,8 @@ import (
 	"regexp"
 )
 
+// ItemPageNextData is the JSON data embedded in the script tag with
+// id=__NEXT_DATA__ in the item page.
 type ItemPageNextData struct {
 	Props struct {
 		PageProps struct {
@@ -16,10 +18,6 @@ type ItemPageNextData struct {
 			} `json:"itemInfo"`
 		} `json:"pageProps"`
 	} `json:"props"`
-}
-
-type ItemInfo struct {
-	ItemStruct TiktokItem `json:"itemStruct"`
 }
 
 // GetWebItemPageNextData returns JSON data embedded in the HTML of item page.

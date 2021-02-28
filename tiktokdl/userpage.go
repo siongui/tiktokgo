@@ -16,10 +16,8 @@ func DownloadAvatar(user tiktokgo.TiktokUser) (err error) {
 	avatarpath := UserAvatarFilePath(user)
 	if _, err := os.Stat(avatarpath); os.IsNotExist(err) {
 		return SaveItemBytes(user.AvatarLarger, avatarpath, nil, nil)
-	} else {
-		if err != nil {
-			return err
-		}
+	} else if err != nil {
+		return err
 	}
 	return
 }

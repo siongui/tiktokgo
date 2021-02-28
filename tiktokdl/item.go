@@ -27,10 +27,8 @@ func DownloadItem(item tiktokgo.TiktokItem) (err error) {
 		//println(item.Video.PlayAddr)
 		//println(item.Video.DownloadAddr)
 		//println(itempath)
-	} else {
-		if err != nil {
-			return err
-		}
+	} else if err != nil {
+		return err
 	}
 	return
 }

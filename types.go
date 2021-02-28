@@ -1,5 +1,6 @@
 package tiktokgo
 
+// TiktokUser used to decode JSON data for TikTok user.
 type TiktokUser struct {
 	Id           string `json:"id"`
 	ShortId      string `json:"shortId"`
@@ -19,6 +20,7 @@ type TiktokUser struct {
 	roomId         string `json:"roomId"`
 }
 
+// TiktokVideo used to decode JSON data for TikTok video.
 type TiktokVideo struct {
 	Id           string   `json:"id"`
 	Height       int64    `json:"height"`
@@ -34,6 +36,7 @@ type TiktokVideo struct {
 	ReflowCover  string   `json:"reflowCover"`
 }
 
+// TiktokUserInfo used to decode TikTok userInfo.
 type TiktokUserInfo struct {
 	User  TiktokUser `json:"user"`
 	Stats struct {
@@ -46,6 +49,7 @@ type TiktokUserInfo struct {
 	} `json:"stats"`
 }
 
+// TiktokItem used to decode TikTok video item.
 type TiktokItem struct {
 	Id           string      `json:"id"`
 	Desc         string      `json:"desc"`
