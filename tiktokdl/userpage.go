@@ -24,32 +24,6 @@ func DownloadAvatar(user tiktokgo.TiktokUser) (err error) {
 	return
 }
 
-// DownloadItem downloads user's tiktok video.
-func DownloadItem(item tiktokgo.TiktokItem) (err error) {
-	cookies, err := tiktokgo.GetCookies()
-	if err != nil {
-		return
-	}
-
-	err = CreateDirIfNotExist(UserDir(item.Author))
-	if err != nil {
-		return
-	}
-
-	itempath := UserItemFilePath(item)
-	if _, err := os.Stat(itempath); os.IsNotExist(err) {
-		return SaveItemBytes(item.Video.PlayAddr, itempath, tiktokgo.GetHeaders(), cookies)
-		//println(item.Video.PlayAddr)
-		//println(item.Video.DownloadAddr)
-		//println(itempath)
-	} else {
-		if err != nil {
-			return err
-		}
-	}
-	return
-}
-
 // DownloadUserPageNextData downloads larger user profile pic and video items in
 // the __NEXT_DATA__ of user page HTML.
 func DownloadUserPageNextData(username string) (err error) {

@@ -10,9 +10,15 @@ export GO111MODULE=on
 
 ALL_GO_SOURCES=$(shell /bin/sh -c "find *.go | grep -v _test.go")
 
+default: item
+
 userpage: fmt
-	@echo "\033[92mTest Download __NEXT_DATA__ url in user page HTML...\033[0m"
+	@echo "\033[92mTest Download profile pic and items in user page HTML...\033[0m"
 	@go test -v $(ALL_GO_SOURCES) userpage_test.go
+
+item: fmt
+	@echo "\033[92mTest Download video url in item page HTML...\033[0m"
+	@go test -v $(ALL_GO_SOURCES) item_test.go
 
 test: fmt
 	@echo "\033[92mTest ...\033[0m"
