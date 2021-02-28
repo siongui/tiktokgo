@@ -78,6 +78,13 @@ type UserPageNextData struct {
 	} `json:"props"`
 }
 
+// GetWebUserPageNextData returns JSON data embedded in the HTML of user page.
+// The parameter username is the name embedded in the URL. For example, the
+// following URL
+//
+//   https://www.tiktok.com/@tiktok
+//
+// The username is tiktok (@ not included).
 func GetWebUserPageNextData(username string) (nd UserPageNextData, err error) {
 	//url := "https://www.tiktok.com/@" + username + "?"
 	url := "https://www.tiktok.com/@" + username

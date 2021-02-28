@@ -8,6 +8,7 @@ func TestGetWebUserPageNextData(t *testing.T) {
 	nd, err := GetWebUserPageNextData("tiktok")
 	if err != nil {
 		t.Error(err)
+		return
 	}
 
 	if nd.Props.PageProps.ServerCode != 200 {
