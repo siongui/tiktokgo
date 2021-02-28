@@ -26,7 +26,7 @@ Currently this package can
   login if the user account is not private.
 - download video item (with watermark) by the item URL.
 
-Visit `example <tiktokdl/example/>` directory for examples.
+Visit `example <tiktokdl/example/>`_ directory for examples.
 
 
 Tested on:

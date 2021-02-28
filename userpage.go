@@ -7,6 +7,8 @@ import (
 	"regexp"
 )
 
+// UserPageNextData is the JSON data embedded in the script tag with
+// id=__NEXT_DATA__ in the user page.
 type UserPageNextData struct {
 	Props struct {
 		PageProps struct {

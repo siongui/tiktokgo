@@ -10,6 +10,8 @@ import (
 	"strconv"
 )
 
+// SaveItemBytes makes HTTP GET request to the given URL and saves the content
+// to local file.
 func SaveItemBytes(url, localFilePath string, headers, cookies map[string]string) (err error) {
 	log.Println("Downloading ", url, " to ", localFilePath)
 
