@@ -11,7 +11,7 @@ export GO111MODULE=on
 
 ALL_GO_SOURCES=$(shell /bin/sh -c "find *.go | grep -v _test.go")
 
-default: iteminfo
+default: itemlist
 
 userinfo: fmt
 	@echo "\033[92mTest getting __NEXT_DATA__ in script tag in user page ...\033[0m"
@@ -20,6 +20,10 @@ userinfo: fmt
 iteminfo: fmt
 	@echo "\033[92mTest getting __NEXT_DATA__ in script tag in item page ...\033[0m"
 	@go test -v $(ALL_GO_SOURCES) item_test.go
+
+itemlist: fmt
+	@echo "\033[92mTest getting user's item list ...\033[0m"
+	@go test -v $(ALL_GO_SOURCES) itemlist_test.go
 
 test_github: fmt
 	@echo "\033[92mTest ...\033[0m"
